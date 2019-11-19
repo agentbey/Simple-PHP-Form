@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Test Form</title>
+<meta name="generator" content="designismylife">
+
+</head>
+<body>
+	<form id="test-form">
+	  <div><label>Date</label><input type="text" name="Date"/></div>
+
+	  <div><label>Property Address</label><input type="text" name="PropertyAddress"/></div>
+
+	  <div><label>Property Municipality</label><input type="text" name="PropertyMunicipality"/></div>
+
+	  <div><label>Property County</label><input type="text" name="PropertyCounty"/></div>
+
+	  <div><label>Property Block</label><input type="text" name="PropertyBlock"/></div>
+
+	  <div><label>Property Lot</label><input type="text" name="PropertyLot"/></div>
+
+	  <div><label>Property Sales Price</label><input type="text" name="PropertySalesPrice"/></div>
+
+	  <div><label>Property Settlement Date</label><input type="text" name="PropertySettlementDate"/></div>
+
+	  <div><label>Property Type</label><input type="text" name="PropertyType"/></div>
+
+	  <div><label>Property Occupied By</label><input type="text" name="PropertyOccupiedBy"/></div>
+
+	  <div><label>Property Key</label><input type="text" name="PropertyKey"/></div>
+
+	  <div><label>Property Key Number</label><input type="text" name="PropertyKeyNumber"/></div>
+
+	  <div><button type="submit"id="submit-form">Submit</button></div>
+	</form>
+	<script>
+		var $form = $('form#test-form'),
+			url = 'https://script.google.com/macros/s/AKfycbyxF_gqTR_pcp7aQEXnG5jGvNvhjg1xi2Guc1SJn_jdCw5LrvA/exec'
+
+		$('#submit-form').on('click', function(e) {
+		e.preventDefault();
+		var jqxhr = $.ajax({
+			url: url,
+			method: "GET",
+			dataType: "json",
+			data: $form.serializeObject()
+		}).success(
+			// do something
+		);
+		})
+	</script>
+</body>
+</html>
