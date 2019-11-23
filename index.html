@@ -1,51 +1,522 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>PHP form to email sample form</title>
 <!-- define some style elements-->
 <style>
-label,a 
+body {
+    color:0c0603;
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 3;
+    letter-spacing: .02em;
+    margin: 0;
+}
+pre, blockquote, dl, figure, table, p, ul, ol, form {
+    margin-bottom: 2.5rem;
+}
+label,a
 {
 	font-family : Arial, Helvetica, sans-serif;
-	font-size : 12px; 
+	font-size : 12px;
+}
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    letter-spacing: .01em;
+    line-height: 1.6;
+}
+hr {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(34, 34, 34, 0.1);
+    margin-bottom: 3rem;
+		box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+form h2 {
+    border-top: 2px solidcc222e;
+    margin-top: 40px;
+    padding-top: 20px;
+		text-align: center;
+		font-size: 2.8rem;
+}
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+    font-size: 15px;
+    display: inline-block;
+    width: 100%;
+}
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+    height: 30px;
+    background-color:fff;
+    color:000000;
+    border: 1px solide1e1e1;
+    border-radius: 4px;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+.container:after, .row:after, .u-cf {
+    content: "";
+    display: table;
+    clear: both;
+}
+.flex-grid-half {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+}
+.flex-grid-half .col {
+    width: 49%;
+    background: none;
+    padding: 0;
 }
 
-</style>	
+
+</style>
 <!-- a helper script for vaidating the form-->
 <script language="JavaScript" src="scripts/gen_validatorv31.js" type="text/javascript"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lcxv8AUAAAAAEdybREume8dAv1cd4HOnLUG6dgz"></script>
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6Lcxv8AUAAAAAEdybREume8dAv1cd4HOnLUG6dgz', {action: 'homepage'}).then(function(token) {
+       ...
+    });
+});
+</script>
+
 </head>
-
-
 <body>
 
 <!-- Start code for the form-->
-<form method="post" name="myemailform" action="form-to-email.php">
-	<p>
-		<label for='name'>Enter Name: </label><br>
-		<input type="text" name="name">
-	</p>
-	<p>
-		<label for='email'>Enter Email Address:</label><br>
-		<input type="text" name="email">
-	</p>
-	<p>
-		<label for='message'>Enter Message:</label> <br>
-		<textarea name="message"></textarea>
-	</p>
-	<input type="submit" name='submit' value="submit">
+<form method="post" name="collegiate-access" action="form-to-email.php">
+
+	<h2>Property</h2>
+	<div class="flex-grid-half">
+			<div class="col">
+					Date:
+					<input type="text" name="Date" id="Date" size="35">
+			</div>
+	</div>
+	<div class="row">
+			Property Address:
+			<input type="text" name="PropertyAddress" id="PropertyAddress">
+	</div>
+	<div class="flex-grid-half">
+			<div class="col">
+					Municipality:
+					<input type="text" name="PropertyMunicipality" id="PropertyMunicipality">
+			</div>
+			<div class="col">
+					County:
+					<input type="text" name="PropertyCounty" id="PropertyCounty">
+			</div>
+	</div>
+	<div class="flex-grid-half">
+			<div class="col">
+					Block:
+					<input type="text" name="PropertyBlock" id="PropertyBlock">
+			</div>
+			<div class="col">
+					Lot:
+					<input type="text" name="PropertyLot" id="PropertyLot">
+			</div>
+	</div>
+	<div class="flex-grid-half">
+			<div class="col">
+					Sales Price:
+					<input type="text" name="PropertySalesPrice" id="PropertySalesPrice">
+			</div>
+			<div class="col">
+					Settlement Date:
+					<input type="text" name="PropertySettlementDate" id="PropertySettlementDate">
+			</div>
+	</div>
+	<hr>
+			<b>Type:</b><br>
+			<div class="flex-grid-half">
+					<div class="col">
+							<input type="radio" name="PropertyType" value="Single"> Single<br>
+							<input type="radio" name="PropertyType" value="Duplex"> Duplex<br>
+							<input type="radio" name="PropertyType" value="Condo"> Condo<br>
+					</div>
+					<div class="col">
+							<input type="radio" name="PropertyType" value="Townhouse"> Townhouse<br>
+							<input type="radio" name="PropertyType" value="Multi"> Multi<br>
+							<input type="radio" name="PropertyType" value="Commercial"> Commercial
+					</div>
+			</div>
+	<hr>
+			<b>Occupied by:</b><br>
+			<div class="flex-grid-thirds">
+					<div class="col">
+									<input type="radio" name="PropertyOccupiedBy" value="Duplex"> Owner<br>
+					</div>
+					<div class="col">
+									<input type="radio" name="PropertyOccupiedBy" value="Tenant"> Tenant<br>
+					</div>
+					<div class="col">
+									<input type="radio" name="PropertyOccupiedBy"> Key<input type="text" name="PropertyKeyNumber" placeholder="Enter key code here." maxlength="4" size="4">
+					</div>
+			</div>
+			<h2>Buyer(s) Borrower(s)</h2>
+					Name:
+					<input type="text" name="BuyerBorrowerName" id="BuyerBorrowerName">
+					Marital Status:
+					<input type="text" name="BuyerBorrowerMaritalStatus" id="BuyerBorrowerMaritalStatus">
+					Mailing Address:
+					<input type="text" name="BuyerBorrowerMailingAddress" id="BuyerBorrowerMailingAddress">
+					<div class="flex-grid-thirds">
+						<div class="col">
+								Home:
+								<input type="text" name="BuyerBorrowerHome" id="BuyerBorrowerHome">
+						</div>
+						<div class="col">
+								Work:
+								<input type="text" name="BuyerBorrowerWork" id="BuyerBorrowerWork">
+						</div>
+						<div class="col">
+								Cell:
+								<input type="text" name="BuyerBorrowerCell" id="BuyerBorrowerCell">
+						</div>
+					</div>
+					Email:
+					<input type="email" name="BuyerBorrowerEmail" id="BuyerBorrowerEmail">
+					<h2>Buyer(s) Borrower(s) Attorney</h2>
+							Name of Law Firm:
+							<input type="text" name="BuyerBorrowerNameLawFirm" id="BuyerBorrowerNameLawFirm">
+							Telephone:
+							<input type="text" name="BuyerBorrowerAttorneyTelephone" id="BuyerBorrowerAttorneyTelephone">
+							Address:
+							<input type="text" name="BuyerBorrowerAttorneyAddress1" id="BuyerBorrowerAttorneyAddress1">
+							Address:
+							<input type="text" name="BuyerBorrowerAttorneyAddress2" id="BuyerBorrowerAttorneyAddress2">
+							<hr>
+							Attorney's Name:
+							<input type="text" name="BuyerBorrowerAttorneysName" id="BuyerBorrowerAttorneysName">
+							<div class="flex-grid-thirds">
+									<div class="col">
+											Email:
+											<input type="text" name="BuyerBorrowerAttorneyEmail" id="BuyerBorrowerAttorneyEmail">
+									</div>
+									<div class="col">
+											Cell:
+											<input type="text" name="BuyerBorrowerAttorneyCell" id="BuyerBorrowerAttorneyCell">
+									</div>
+									<div class="col">
+											Fax:
+											<input type="text" name="BuyerBorrowerAttorneyFax" id="BuyerBorrowerAttorneyFax">
+									</div>
+							</div>
+
+							<h2>Lender</h2>
+									Company Name:
+									<input type="text" name="LenderCompanyName" id="LenderCompanyName">
+									Telephone:
+									<input type="text" name="LenderTelephone" id="LenderTelephone">
+									Address:
+									<input type="text" name="LenderAddress1" id="LenderAddress1">
+
+									<div class="flex-grid-half">
+											<div class="col">
+													Lender License:
+													<input type="text" name="LenderLicense" id="LenderLicense">
+											</div>
+											<div class="col">
+													Company Email:
+													<input type="text" name="LenderCompanyEmail" id="LenderCompanyEmail">
+											</div>
+									</div>
+
+									<div class="flex-grid-half">
+											<div class="col">
+													Loan Officer:
+													<input type="text" name="LenderLoanOfficer" id="LenderLoanOfficer">
+											</div>
+											<div class="col">
+													License:
+													<input type="text" name="LenderLoanOfficerLicense" id="LenderLoanOfficerLicense">
+											</div>
+									</div>
+
+									<div class="flex-grid-thirds">
+											<div class="col">
+													Office Tel.:
+													<input type="text" name="LenderLoanOfficerTelephone" id="LenderLoanOfficerTelephone">
+											</div>
+											<div class="col">
+													Ext.:
+													<input type="text" name="LenderLoanOfficerExt" id="LenderLoanOfficerExt">
+											</div>
+											<div class="col">
+													Cell:
+													<input type="text" name="LenderLoanOfficerCell" id="LenderLoanOfficerCell">
+											</div>
+									</div>
+
+									Email:
+									<div class="flex-grid-half">
+											<div class="col">
+													<input type="text" name="LenderLoanOfficerEmail1" id="LenderLoanOfficerEmail1">
+											</div>
+											<div class="col">
+													<input type="text" name="LenderLoanOfficerEmail2" id="LenderLoanOfficerEmail2">
+											</div>
+									</div>
+
+
+									<div class="flex-grid-thirds">
+											<div class="col">
+													Processor:
+													<input type="text" name="LenderLoanProcessorName" id="LenderLoanProcessorName">
+											</div>
+											<div class="col">
+													Tel:
+													<input type="text" name="LenderLoanProcessorTelephone" id="LenderLoanProcessorTelephone">
+											</div>
+											<div class="col">
+													Ext:
+													<input type="text" name="LenderLoanProcessorExt" id="LenderLoanProcessorExt">
+											</div>
+									</div>
+
+									Email:
+									<div class="flex-grid-half">
+											<div class="col">
+													<input type="text" name="LenderLoanProcessorEmail1" id="LenderLoanProcessorEmail1">
+											</div>
+											<div class="col">
+													<input type="text" name="LenderLoanProcessorEmail2" id="LenderLoanProcessorEmail2">
+											</div>
+									</div>
+
+									<div class="flex-grid-half">
+											<div class="col">
+													Loan:
+													<input type="text" name="LenderLoanProcessorLoanNumber" id="LenderLoanProcessorLoanNumber">
+											</div>
+
+											<div class="col">
+													Mortage Amount:
+													<input type="text" name="LenderLoanProcessorMortageAmount" id="LenderLoanProcessorMortageAmount">
+											</div>
+									</div>
+
+									Mortgage Type:
+									<div class="flex-grid-quarter">
+											<div class="col">
+													<input type="radio" name="LenderLoanMortgageType" value="FHA"> FHA
+											</div>
+											<div class="col">
+													<input type="radio" name="LenderLoanMortgageType" value="Conv"> Conv
+											</div>
+											<div class="col">
+													<input type="radio" name="LenderLoanMortgageType" value="Uninsured"> Uninsured
+											</div>
+											<div class="col">
+													<input type="radio" name="LenderLoanMortgageType" value="VA"> VA
+											</div>
+									</div>
+									<h2>Sellers</h2>
+									Name(s):
+									<div class="flex-grid-half">
+											<div class="col">
+													<input type="text" name="SellersName1" id="SellersName1">
+											</div>
+											<div class="col">
+													<input type="text" name="SellersName2" id="SellersName2">
+											</div>
+									</div>
+
+									Marital Status:
+									<input type="text" name="SellersMaritalStatus" id="SellersMaritalStatus">
+
+									<hr>
+
+									Over 62:
+									<div class="flex-grid-quarter">
+											<div class="col">
+													<input type="radio" name="SellersYes" id="SellersYes" value="Yes"> Yes:
+											</div>
+											<div class="col">
+													<input type="radio" name="SellersNo" id="SellersNo" value="No"> No:
+											</div>
+											<div class="col"></div>
+											<div class="col"></div>
+									</div>
+
+									<hr>
+
+									Mailing Address:
+									<input type="text" name="SellersMailingAddress" id="SellersMailingAddress">
+									<div class="flex-grid-thirds">
+											<div class="col">
+													Home:
+													<input type="text" name="SellersHome" id="SellersHome">
+											</div>
+											<div class="col">
+													Work:
+													<input type="text" name="SellersWork" id="SellersWork">
+											</div>
+											<div class="col">
+													Cell:
+													<input type="text" name="SellersCell" id="SellersCell">
+											</div>
+									</div>
+									Email:
+									<input type="email" name="SellersContactEmail" id="SellersContactEmail">
+
+									<h2>Seller(s) Attorney</h2>
+											Name of Law Firm:
+											<input type="text" name="SellerAttorneyNameLawFirm" id="SellerAttorneyNameLawFirm">
+											Telephone:
+											<input type="text" name="SellerAttorneyTelephone" id="SellerAttorneyTelephone">
+											Address:
+											<input type="text" name="SellerAttorneyAddress1" id="SellerAttorneyAddress1">
+											Address:
+											<input type="text" name="SellerAttorneyAddress2" id="SellerAttorneyAddress2">
+											<hr>
+											Attorney's Name:
+											<input type="text" name="SellerAttorneysName" id="SellerAttorneysName">
+											<div class="flex-grid-thirds">
+													<div class="col">
+															Email:
+															<input type="text" name="SellerAttorneyEmail" id="SellerAttorneyEmail">
+													</div>
+													<div class="col">
+															Cell:
+															<input type="text" name="SellerAttorneyCell" id="SellerAttorneyCell">
+													</div>
+													<div class="col">
+															Fax:
+															<input type="text" name="SellerAttorneyFax" id="SellerAttorneyFax">
+													</div>
+											</div>
+											<h2>Broker's Data</h2>
+											<h3>Listing Broker:</h3>
+											<div class="flex-grid-half">
+													<div class="col">
+															Listing Broker:
+															<input type="text" name="ListingBrokerName" id="ListingBrokerName">
+													</div>
+													<div class="col">
+															Listing Broker Licence:
+															<input type="text" name="ListingBrokerLicense" id="ListingBrokerLicense">
+													</div>
+											</div>
+											Address:
+											<input type="text" name="ListingBrokerAddress1" id="ListingBrokerAddress1">
+											Address:
+											<input type="text" name="ListingBrokerAddress2" id="ListingBrokerAddress2">
+											<div class="flex-grid-half">
+													<div class="col">
+															Office Telephone:
+															<input type="text" name="ListingBrokerTelephone" id="ListingBrokerTelephone">
+													</div>
+													<div class="col">
+															Office Email:
+															<input type="text" name="ListingBrokerEmail" id="ListingBrokerEmail">
+													</div>
+											</div>
+											<hr>
+											<div class="flex-grid-half">
+													<div class="col">
+															Agent:
+															<input type="text" name="ListingBrokerAgentName" id="ListingBrokerAgentName">
+													</div>
+													<div class="col">
+															Agent Licence:
+															<input type="text" name="ListingBrokerAgentLicense" id="ListingBrokerAgentLicense">
+													</div>
+											</div>
+											<div class="flex-grid-thirds">
+													<div class="col">
+															Office:
+															<input type="text" name="ListingBrokerAgentPhone" id="ListingBrokerAgentPhone">
+													</div>
+													<div class="col">
+															Extension:
+															<input type="text" name="ListingBrokerAgentExt" id="ListingBrokerAgentExt">
+													</div>
+													<div class="col">
+															Fax:
+															<input type="text" name="ListingBrokerAgentFax" id="ListingBrokerAgentFax">
+													</div>
+											</div>
+											Email:
+											<input type="text" name="ListingBrokerAgentEmail" id="ListingBrokerAgentEmail">
+											<hr>
+
+											<h3>Selling Broker:</h3>
+											<div class="flex-grid-half">
+													<div class="col">
+															Selling Broker:
+															<input type="text" name="SellingBrokerName" id="SellingBrokerName">
+													</div>
+													<div class="col">
+															Selling Broker Licence:
+															<input type="text" name="SellingBrokerLicense" id="SellingBrokerLicense">
+													</div>
+											</div>
+											Address:
+											<input type="text" name="SellingBrokerAddress1" id="SellingBrokerAddress1">
+											Address:
+											<input type="text" name="SellingBrokerAddress2" id="SellingBrokerAddress2">
+											<div class="flex-grid-half">
+													<div class="col">
+															Office Telephone:
+															<input type="text" name="SellingBrokerTelephone" id="SellingBrokerTelephone">
+													</div>
+													<div class="col">
+															Office Email:
+															<input type="text" name="SellingBrokerOfficeEmail" id="SellingBrokerOfficeEmail">
+													</div>
+											</div>
+											<hr>
+											<div class="flex-grid-half">
+													<div class="col">
+															Agent:
+															<input type="text" name="SellingBrokerAgentName" id="SellingBrokerAgentName">
+													</div>
+													<div class="col">
+															Agent Licence:
+															<input type="text" name="SellingBrokerAgentLicense" id="SellingBrokerAgentLicense">
+													</div>
+											</div>
+											<div class="flex-grid-thirds">
+													<div class="col">
+															Office:
+															<input type="text" name="SellingBrokerAgentPhone" id="SellingBrokerAgentPhone">
+													</div>
+													<div class="col">
+															Extension:
+															<input type="text" name="SellingBrokerAgentOfficeExt" id="SellingBrokerAgentOfficeExt">
+													</div>
+													<div class="col">
+															Fax:
+															<input type="text" name="SellingBrokerAgentFax" id="SellingBrokerAgentFax">
+													</div>
+											</div>
+											Email:
+											<input type="text" name="SellingBrokerAgentEmail" id="SellingBrokerAgentEmail">
+					<hr>
+			<div style="text-align:center;">
+				<input type="submit" name='submit' class="red" value="Submit">
+				<input type="reset" class="warmgray" value="Clear">
+			</div>
+	</div>
 </form>
+
 <script language="JavaScript">
 // Code for validating the form
 // Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
 // for details
-var frmvalidator  = new Validator("myemailform");
-frmvalidator.addValidation("name","req","Please provide your name"); 
-frmvalidator.addValidation("email","req","Please provide your email"); 
-frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+var frmvalidator  = new Validator("collegiate-access");
+frmvalidator.addValidation("BuyerBorrowerName","req","Please provide your name");
+frmvalidator.addValidation("BuyerBorrowerEmail","req","Please provide your email");
+frmvalidator.addValidation("BuyerBorrowerEmail","email","Please enter a valid email address");
 </script>
-<p>
-<a href='http://www.html-form-guide.com/email-form/php-form-to-email.html'
->PHP form to email article page</a>
-</p>
 </body>
 </html>
